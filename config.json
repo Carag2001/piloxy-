@@ -1,0 +1,7 @@
+{
+  "logsChannel": "logs",
+  "welcomeChannel": "bienvenue",
+  "ticketCategory": "TICKETS",
+  "modRole": "Modérateur",
+  "muteRole": "Muté"
+}
