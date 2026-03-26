@@ -3,6 +3,7 @@ const { Client, GatewayIntentBits, Collection, REST, Routes, EmbedBuilder, Activ
 const fs = require('fs');
 const path = require('path');
 const config = require('./config.json');
+
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
@@ -13,9 +14,11 @@ const client = new Client({
     GatewayIntentBits.GuildModeration,
   ]
 });
+
 client.commands = new Collection();
 const commandFolders = fs.readdirSync(path.join(__dirname, 'commands'));
 const allCommands = [];
+
 for (const folder of commandFolders) {
   const commandFiles = fs.readdirSync(path.join(__dirname, 'commands', folder)).filter(f => f.endsWith('.js'));
   for (const file of commandFiles) {
@@ -24,6 +27,7 @@ for (const folder of commandFolders) {
     allCommands.push(command.data.toJSON());
   }
 }
+
 client.once('ready', async () => {
   console.log(`✅ Connecté en tant que ${client.user.tag}`);
   client.user.setActivity('votre serveur 👀', { type: ActivityType.Watching });
@@ -35,6 +39,7 @@ client.once('ready', async () => {
     console.error(error);
   }
 });
+
 client.on('interactionCreate', async interaction => {
   if (interaction.isChatInputCommand()) {
     const command = client.commands.get(interaction.commandName);
@@ -55,6 +60,7 @@ client.on('interactionCreate', async interaction => {
     }
   }
 });
+
 client.on('guildMemberAdd', async member => {
   const channel = member.guild.channels.cache.find(c => c.name === config.welcomeChannel);
   if (!channel) return;
@@ -66,18 +72,21 @@ client.on('guildMemberAdd', async member => {
     .setTimestamp();
   channel.send({ embeds: [embed] });
 });
+
 client.on('guildMemberRemove', async member => {
   const channel = member.guild.channels.cache.find(c => c.name === config.welcomeChannel);
   if (!channel) return;
   channel.send(`👋 **${member.user.tag}** a quitté le serveur. Bonne continuation !`);
 });
+
 const token = process.env.TOKEN;
 console.log('Token détecté:', token ? 'OUI' : 'NON');
 client.login(token);
 ```
 
-**Ensuite dans le CMD :**
+**Après avoir collé et commité sur GitHub, dans le CMD :**
 ```
+git pull
 ```
 ```
 node index.js
