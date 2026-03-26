@@ -1,9 +1,4 @@
-require('dotenv').config();
-```
 
-**Étape 3 — Vérifiez que le fichier `.env` existe bien :**
-```
-type .env
 const { Client, GatewayIntentBits, Collection, REST, Routes, EmbedBuilder, ActivityType } = require('discord.js');
 const fs = require('fs');
 const path = require('path');
