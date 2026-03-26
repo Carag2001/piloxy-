@@ -79,4 +79,6 @@ client.on('guildMemberRemove', async member => {
   channel.send(`👋 **${member.user.tag}** a quitté le serveur. Bonne continuation !`);
 });
 
-client.login(process.env.TOKEN);
+const token = process.env.TOKEN;
+console.log('Token détecté:', token ? 'OUI' : 'NON');
+client.login(token);
