@@ -78,7 +78,6 @@ client.login(token);
 
 **Ensuite dans le CMD :**
 ```
-git pull
 ```
 ```
 node index.js
