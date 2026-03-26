@@ -86,7 +86,6 @@ client.login(token);
 
 **Après avoir collé et commité sur GitHub, dans le CMD :**
 ```
-git pull
 ```
 ```
 node index.js
