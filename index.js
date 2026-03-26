@@ -82,10 +82,3 @@ client.on('guildMemberRemove', async member => {
 const token = process.env.TOKEN;
 console.log('Token détecté:', token ? 'OUI' : 'NON');
 client.login(token);
-```
-
-**Après avoir collé et commité sur GitHub, dans le CMD :**
-```
-```
-```
-node index.js
